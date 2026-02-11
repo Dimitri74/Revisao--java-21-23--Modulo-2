@@ -1,21 +1,28 @@
 package mx.florinda.cardapio;
 
-import com.google.gson.Gson;
 
 import java.math.BigDecimal;
 
-import static mx.florinda.cardapio.ItemCardapio.CategoriaCardapio.*;
-
 public class Main {
     public static void main(String[] args) {
-        ItemCardapio refrescoDoChaves = new ItemCardapio(1L, "Refresco do Chaves", """
-                Suco de limão que parece tamarindo e tem gosto de groselha
-                """, BEBIDAS,
-                new BigDecimal("2.99"), null);
+        Database database = new Database();
 
-        Gson gson = new Gson();
-        String json = gson.toJson(refrescoDoChaves);
+        ItemCardapio item = database.itemCardapioPorId(1L).orElseThrow(); // 2.99
 
-        System.out.println(json);
+        database.alteraPrecoItemCardapio(1L, new BigDecimal("3.99")); // 2.99 => 3.99
+        ItemCardapio item1 = database.itemCardapioPorId(1L).orElseThrow(); // 3.99
+
+        database.alteraPrecoItemCardapio(1L, new BigDecimal("2.99")); // 3.99 => 2.99
+        ItemCardapio item2 = database.itemCardapioPorId(1L).orElseThrow(); // 2.99
+
+        database.alteraPrecoItemCardapio(1L, new BigDecimal("4.99")); // 2.99 => 4.99
+        ItemCardapio item3 = database.itemCardapioPorId(1L).orElseThrow(); // 4.99
+
+        System.out.println("== " + (item == item2));
+        System.out.println("equals() " + (item.equals(item2)));
+        System.out.println("hashCode() " + (item.hashCode() == item2.hashCode()));
+
+        database.rastroAuditoriaPrecos();
     }
+
 }
