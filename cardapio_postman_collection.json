@@ -1,0 +1,105 @@
+{
+	"info": {
+		"name": "Cardapio_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Itens",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/cardapio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cardapio"
+					]
+				}
+			}
+		},
+		{
+			"name": "Adicionar Item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 10,\n    \"nome\": \"Taco do Seu Madruga\",\n    \"descricao\": \"Taco apimentado para quem não quer pagar o aluguel.\",\n    \"categoria\": \"PRATOS_PRINCIPAIS\",\n    \"preco\": 5.50\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/cardapio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cardapio"
+					]
+				}
+			}
+		},
+		{
+			"name": "Alterar Preço",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/cardapio?id=1&novoPreco=4.99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cardapio"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "novoPreco",
+							"value": "4.99"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Remover Item",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/cardapio?id=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cardapio"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "10"
+						}
+					]
+				}
+			}
+		}
+	]
+}

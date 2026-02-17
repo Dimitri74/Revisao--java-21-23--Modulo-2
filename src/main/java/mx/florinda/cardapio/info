@@ -1,0 +1,1 @@
+//Startar o docker e a imagem mysql: docker compose -f src/main/java/mx/florinda/cardapio/docker-compose.yml up -d
